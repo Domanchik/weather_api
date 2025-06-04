@@ -37,9 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'rest_framework',
     'weather',
-    'drf_spectacular'
+    'drf_spectacular',
+    'django_filters',
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -75,10 +80,21 @@ WSGI_APPLICATION = 'weather_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'weatherdb',
+        'USER': 'doman',
+        'PASSWORD': 'weather123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -127,3 +143,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Weather API',
+    'DESCRIPTION': 'API for Weather Data',
+    'VERSION': '1.0.0',
+}
