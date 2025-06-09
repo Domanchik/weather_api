@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
-class WeatherRecordView(generics.ListCreateAPIView):
+class WeatherRecordView(generics.ListAPIView):
     queryset = WeatherRecord.objects.select_related('city__region__country').all()
     serializer_class = WeatherRecordSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
